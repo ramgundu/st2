@@ -55,7 +55,7 @@ jobs:
     - name: "Integration Tests (Python 3.6)"
       python: 3.6
       env: TASK="ci-py3-integration" CACHE_NAME=py3 PYTHON_VERSION=python3.6 COMMAND_THRESHOLD=770
-
+ 
 addons:
   apt:
     sources:
