@@ -103,6 +103,7 @@ before_script:
   # chmod to make glob work (*.log to avoid log dir)
   - sudo chmod a+rx /var/log/rabbitmq ; sudo tail -n 30 /var/log/rabbitmq/*.log
   
+  - sudo echo date
   - sudo echo 'lkfsaj094u502qu920384092348'
   - sudo echo $COLUMNS
   - sudo echo $LINES
