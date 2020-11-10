@@ -1,5 +1,6 @@
 os: linux
-dist: xenial
+dist: bionic
+arch: s390x
 language: python
 
 branches:
@@ -58,14 +59,8 @@ jobs:
  
 addons:
   apt:
-    sources:
-      - sourceline: 'deb [arch=amd64] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse'
-        key_url: 'https://www.mongodb.org/static/pgp/server-4.0.asc'
     packages:
-      - mongodb-org-server=4.0.*
-      - mongodb-org-shell=4.0.*
       - rabbitmq-server
-      - libffi-dev
 
 cache:
   pip: true
@@ -107,6 +102,10 @@ before_script:
   - sudo service rabbitmq-server restart
   # chmod to make glob work (*.log to avoid log dir)
   - sudo chmod a+rx /var/log/rabbitmq ; sudo tail -n 30 /var/log/rabbitmq/*.log
+  
+  - sudo echo 'lkfsaj094u502qu'
+  - sudo echo $COLUMNS
+  
   # Print various binary versions
   - mongod --version
   - git --version
@@ -119,7 +118,7 @@ script:
   # Clean up egg-info directories which get created when installing runners
   # NOTE: We enable code coverage and per test timing information on master so build can take twice
   # as long as PR builds
-  - if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]] && [[ "${IS_NIGHTLY_BUILD}" = "no" ]]; then COMMAND_THRESHOLD=$(expr ${COMMAND_THRESHOLD} \* 2); fi; ./scripts/travis/time-command.sh "make ${TASK}" ${COMMAND_THRESHOLD}
+  - if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]] && [[ "${IS_NIGHTLY_BUILD}" = "no" ]]; then COMMAND_THRESHOLD=$(expr ${COMMAND_THRESHOLD} \* 2); fi; ./scripts/travis/time-command.sh "make -i ${TASK}" ${COMMAND_THRESHOLD}
   # Run any additional nightly checks only as part of a nightly (cron) build
   - if [[ "${IS_NIGHTLY_BUILD}" = "yes" ]]; then ./scripts/travis/run-nightly-make-task-if-exists.sh "${TASK}"; fi
   # NOTE: We only generate and submit coverage report for master and version branches
