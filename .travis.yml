@@ -1,6 +1,5 @@
 os: linux
 dist: xenial
-arch: amd64
 language: python
 
 branches:
@@ -103,7 +102,7 @@ before_script:
   # chmod to make glob work (*.log to avoid log dir)
   - sudo chmod a+rx /var/log/rabbitmq ; sudo tail -n 30 /var/log/rabbitmq/*.log
   
-  - sudo echo date
+  - sudo date
   - sudo echo 'lkfsaj094u502qu920384092348'
   - sudo echo $COLUMNS
   - sudo echo $LINES
