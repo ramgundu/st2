@@ -46,10 +46,9 @@ class TerminalUtilsTestCase(unittest2.TestCase):
     def test_get_terminal_size_columns_stdout_is_used(self):
         columns = get_terminal_size_columns()
         print('arg1985093284095238: ')
-        print(struct)
-        print(struct.pack)
-        print(struct.unpack)
-        print(mock.Mock(return_value=(333, 444)))
+        a=mock.Mock(return_value=(333, 444))
+        print(a)
+        print(a.return_value)
         print('arg2rurwipwrpoewrik: ')
         print(columns)
         self.assertEqual(columns, 444)
