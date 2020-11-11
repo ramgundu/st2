@@ -49,6 +49,7 @@ class TerminalUtilsTestCase(unittest2.TestCase):
         a=mock.Mock(return_value=(333, 444))
         print(a)
         print(a.return_value)
+        print('struct.unpack')
         print('arg2rurwipwrpoewrik: ')
         print(columns)
         self.assertEqual(columns, 444)
