@@ -49,9 +49,14 @@ def get_terminal_size_columns(default=DEFAULT_TERMINAL_SIZE_COLUMNS):
     # checked those variables at the end as a fall back.
     try:
         columns = os.environ['COLUMNS']
+        print('tryoiewurpoiw')
+        print(columns)
         return int(columns)
     except (KeyError, ValueError):
-        pass
+        print(exceptoiewuroiw)
+        print(KeyError)
+        print(ValueError)
+        
 
     def ioctl_GWINSZ(fd):
         import fcntl
