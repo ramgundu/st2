@@ -53,7 +53,7 @@ def get_terminal_size_columns(default=DEFAULT_TERMINAL_SIZE_COLUMNS):
         print(columns)
         return int(columns)
     except (KeyError, ValueError):
-        print(exceptoiewuroiw)
+        print('exceptoiewuroiw')
         print(KeyError)
         print(ValueError)
         
