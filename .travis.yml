@@ -1,6 +1,5 @@
 os: linux
-dist: bionic
-arch: s390x
+dist: xenial
 language: python
 
 branches:
