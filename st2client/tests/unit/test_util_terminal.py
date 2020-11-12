@@ -39,18 +39,14 @@ class TerminalUtilsTestCase(unittest2.TestCase):
     def test_get_terminal_size_columns_columns_environment_variable_has_precedence(self):
         # Verify that COLUMNS environment variables has precedence over other approaches
         columns = get_terminal_size_columns()
-
+        print('ColumnsEnvVar')
+        print(columns)
         self.assertEqual(columns, 222)
 
     @mock.patch('struct.unpack', mock.Mock(return_value=(333, 444)))
     def test_get_terminal_size_columns_stdout_is_used(self):
         columns = get_terminal_size_columns()
-        print('arg1985093284095238: ')
-        #a=mock.Mock(return_value=(333, 444))
-        #print(a)
-        #print(a.return_value)
-       # print('struct.unpack')
-       # print('arg2rurwipwrpoewrik: ')
+        print('ColumnsStdOut: ')
         print(columns)
         self.assertEqual(columns, 444)
         
@@ -66,11 +62,15 @@ class TerminalUtilsTestCase(unittest2.TestCase):
         mock_popen.return_value = mock_process
 
         columns = get_terminal_size_columns()
+        print('ColumnsPopen')
+        print(columns)
         self.assertEqual(columns, 666)
 
     @mock.patch('struct.unpack', mock.Mock(side_effect=Exception('a')))
     @mock.patch('subprocess.Popen', mock.Mock(side_effect=Exception('b')))
     def test_get_terminal_size_default_values_are_used(self):
         columns = get_terminal_size_columns()
+        print('ColumnsDefaultVal')
+        print(columns)
 
         self.assertEqual(columns, DEFAULT_TERMINAL_SIZE_COLUMNS)
