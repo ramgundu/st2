@@ -51,6 +51,7 @@ def get_terminal_size_columns(default=DEFAULT_TERMINAL_SIZE_COLUMNS):
         columns = os.environ['COLUMNS']
         print('tryoiewurpoiw')
         print(columns)
+        envvar = os.enivron
         return int(columns)
     except (KeyError, ValueError):
         print('exceptoiewuroiw')
