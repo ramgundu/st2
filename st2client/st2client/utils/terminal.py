@@ -55,7 +55,7 @@ def get_terminal_size_columns(default=DEFAULT_TERMINAL_SIZE_COLUMNS):
         print(envvar)
         return int(columns)
     except (KeyError, ValueError):
-        pass
+        print('ColumnsInException')
                 
 
     def ioctl_GWINSZ(fd):
